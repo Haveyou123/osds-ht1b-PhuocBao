@@ -198,47 +198,88 @@ sql3a = '''
 SELECT DISTINCT nationality FROM painters_info
 WHERE nationality IS NOT NULL AND nationality != '';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 4B. Họa sĩ có tên bắt đầu bằng 'F'
 sql4b = '''
 SELECT name FROM painters_info
 WHERE name LIKE '% F%';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 5B. Họa sĩ có quốc tịch chứa 'French'
 sql5b = '''
 SELECT name, nationality FROM painters_info
 WHERE nationality LIKE '%French%';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
+
 # 6B. Họa sĩ không có thông tin quốc tịch
 sql6b = '''
 SELECT name FROM painters_info
 WHERE nationality IS NULL OR nationality = '';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 7B. Họa sĩ có cả ngày sinh và ngày mất
 sql7b = '''
 SELECT name FROM painters_info
 WHERE birth IS NOT NULL AND birth != '' AND death IS NOT NULL AND death != '';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 8B. Họa sĩ có tên chứa 'Fales'
 sql8b = '''
 SELECT * FROM painters_info
 WHERE name LIKE '%Fales%';
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 9C. Sắp xếp họa sĩ theo tên A-Z
 sql9c = '''
 SELECT name FROM painters_info
 ORDER BY name ASC;
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # 10C. Nhóm và đếm số họa sĩ theo quốc tịch
 sql10c = '''
 SELECT nationality, COUNT(*) as painter_count FROM painters
 GROUP BY nationality;
 '''
+cursor.execute(sql2a)
+conn.commit()
+rows = cursor.fetchall()
+for row in rows:
+    print(row)
 
 # Đóng kết nối cuối cùng
 conn.close()
